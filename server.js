@@ -1,26 +1,5 @@
 require('dotenv').config();
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
-const cors = require('cors');
-const helmet = require('helmet');
 const PORT = process.env.PORT;
-const userRouter = require('./routes/user.js');
-const eventRouter = require('./routes/event.js');
-
-app.use(morgan('dev'));
-app.use(cors());
-app.use(helmet());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use('/uploads', express.static('uploads'));
-
-app.use('/api/user', userRouter);
-app.use('/api/event', eventRouter);
-
-app.use(function errorHandler(err, req, res, next) {
-  console.error(err);
-});
 
 require('./config.js')
   .then(() =>
