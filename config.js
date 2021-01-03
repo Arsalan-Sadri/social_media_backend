@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
-
-module.exports = mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+module.exports = {
+  MONGODB_URI: process.env.MONGODB_URI,
+  PORT: process.env.PORT,
+  NODE_ENV: process.env.NODE_ENV || 'development'
+}
